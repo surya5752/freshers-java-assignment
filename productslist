@@ -1,0 +1,53 @@
+/*products menulist ,sublist ,price,quantity and availability using buffer reader and scanner*/
+
+package com;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
+public class Manage {
+	public void menu() throws IOException {
+		try {
+
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+			Shopping s = new Shopping();
+			System.out.println("----------------");
+			System.out.println("WELCOME TO SUPERMARKET");
+			System.out.println("----------------\n");
+			boolean choice = true;
+			while (choice) {
+				Scanner sc = new Scanner(System.in);
+				System.out.println("----------------");
+				System.out.println("   main-shelf items   ");
+				System.out.println("----------------");
+				System.out.println(" 1.cerals     ");
+				System.out.println(" 2.vegetables ");
+				System.out.println(" 3.fruits     ");
+				System.out.println("----------------");
+				System.out.println("Select what u want : ");
+				int i = sc.nextInt();
+				switch (i) {
+				case 1:
+					s.selectCerals();
+					break;
+				case 2:
+					s.selectVegetables();
+					break;
+				case 3:
+					s.selectFruits();
+					break;
+				default:
+					System.out.println("invalid");
+					break;
+				}
+		System.out.println("Do u want to selct more main menu(true or false): ");
+				choice = Boolean.parseBoolean(br.readLine());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}
