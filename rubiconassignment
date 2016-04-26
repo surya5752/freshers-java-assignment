@@ -1,0 +1,64 @@
+
+
+package com;
+
+class CartsInfo implements Runnable {
+
+ // Available carts are
+ int available = 2;
+ int wanted;
+
+// int ch;
+
+ public CartsInfo(int i) {
+      wanted = i;
+ }
+
+ @Override
+ public void run() {
+      synchronized (this) {
+          // Display available carts
+          System.out.println("Available carts= " + available);
+  
+          if (available >= wanted) {
+               String name = Thread.currentThread().getName();
+               System.out.println(wanted + " Carts(s) reserved for " + name);
+               try {
+                    Thread.sleep(3000);//waiting
+                    available = available - wanted;
+                    // update the no. of available carts
+               } catch (InterruptedException ie) {
+                    ie.printStackTrace();
+               }
+          } else {
+               // if available carts are less, display sorry
+               System.out.println("Sorry! carts already in use wait for some time");
+          }
+      }
+
+ }
+
+}
+
+package com;
+
+public class Info {
+
+	   public static void main(String[] args) {
+	      
+	        CartsInfo obj = new CartsInfo(1);
+
+	        Thread t1 = new Thread(obj);
+	        Thread t2 = new Thread(obj);
+
+	        // take the thread names as customer names
+	        t1.setName("First customer");
+	        t2.setName("Second customer");
+
+	    
+	        t1.start();
+	        t2.start();
+	   }
+
+	}
+
