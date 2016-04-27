@@ -1,0 +1,476 @@
+/*This is all about product details ,sublist,prices,available quantity and total of the prices*/
+
+package com;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
+public class Manage {
+	public void menu() throws IOException {
+		try {
+
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+			Shopping s = new Shopping();
+			System.out.println("----------------");
+			System.out.println("WELCOME TO SUPERMARKET");
+			System.out.println("----------------\n");
+			boolean choice = true;
+			while (choice) {
+				Scanner sc = new Scanner(System.in);
+				System.out.println("----------------");
+				System.out.println("   main-shelf items   ");
+				System.out.println("----------------");
+				System.out.println(" 1.cerals     ");
+				System.out.println(" 2.vegetables ");
+				System.out.println(" 3.fruits     ");
+				System.out.println("----------------");
+				System.out.println("Select what u want : ");
+				int i = sc.nextInt();
+				switch (i) {
+				case 1:
+					s.selectCerals();
+					break;
+				case 2:
+					s.selectVegetables();
+					break;
+				case 3:
+					s.selectFruits();
+					break;
+				default:
+					System.out.println("invalid");
+					break;
+				}
+		System.out.println("Do u want to selct more main menu(true or false): ");
+				choice = Boolean.parseBoolean(br.readLine());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}
+package com;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
+public class Shopping extends Productlist {
+	static int ftotal = 0;
+	Productlist p1  = new Productlist();
+	Scanner sc = new Scanner(System.in);
+
+	void selectCerals() throws IOException {
+		try {
+			BufferedReader br = new BufferedReader(new InputStreamReader(
+					System.in));
+			boolean choice = true;
+			while (choice) {
+				System.out.println("-------------------------");
+				System.out.println("CERALS-MENU");
+				System.out.println("-------------------------");
+				System.out.println("1.Rice");
+				System.out.println("2.Wheat");
+				System.out.println("-------------------------");
+
+				System.out.println("Select your choice from Cerals-Menu: ");
+				int j = sc.nextInt();
+				switch (j) {
+
+				case 1:
+					int quantity;
+					int price = rp;
+					System.out.println("Rice: " + price + " Rs");
+					System.out.println("Quantity(kgs): ");
+					quantity = sc.nextInt();
+					int tot = quantity * price;
+
+					p1.setRiceqty((p1.getRiceqty() - quantity));
+					System.out.println("Cost of rice: " + tot);
+					ftotal = ftotal + tot;
+					System.out.println("Remaining Rice-Quantity      : " + p1.getRiceqty());
+
+					break;
+
+				case 2:
+					int wheatquantity;
+					int wheatprice = wp;
+					System.out.println("Wheat: " + wheatprice + " Rs");
+					System.out.println("Quantity(kgs): ");
+					wheatquantity = sc.nextInt();
+					int total = wheatquantity * wheatprice;
+					p1.setWheatqty((p1.getWheatqty() - wheatquantity));
+					System.out.println("Cost of wheat: " + total);
+					ftotal = ftotal + total;
+					System.out.println("Remaining Wheat-Quantity     :" + p1.getWheatqty());
+
+					break;
+				default:
+					System.out.println("Invalid");
+					break;
+				}
+		System.out.println("Do you want to selct more from Cerals-Menu?\n Enter your choice (true or false): ");
+				choice = Boolean.parseBoolean(br.readLine());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	void selectVegetables() throws IOException {
+		try {
+			BufferedReader br = new BufferedReader(new InputStreamReader(
+					System.in));
+			boolean choice = true;
+			while (choice) {
+				System.out.println("-------------------");
+				System.out.println("VEGETABLES-MENU");
+				System.out.println("-------------------");
+				System.out.println("1.Brinjal");
+				System.out.println("2.Tomato");
+				System.out.println("3.Potato");
+				System.out.println("4.Onion");
+				System.out.println("--------------------");
+				System.out.println("Select your choice from Vegetable-Menu: ");
+				int j = sc.nextInt();
+				switch (j) {
+				case 1:
+					int brinjalquantity;
+					int brinjalprice = bp;
+					System.out.println("Brinjal: " + brinjalprice + " Rs");
+					System.out.println("Quantity(kgs): ");
+					brinjalquantity = sc.nextInt();
+					int tot = brinjalquantity * brinjalprice;
+					p1.setBrinjalqty((p1.getBrinjalqty() - brinjalquantity));
+					System.out.println("Cost of brinjal: " + tot);
+					ftotal = ftotal + tot;
+					System.out.println("Remaining Brinjal-Quantity   : " + p1.getBrinjalqty());
+
+					break;
+				case 2:
+					int tomatoquantity;
+					int tomatoprice = tp;
+					System.out.println("Tomato: " + tomatoprice + " Rs");
+					System.out.println("Quantity(kgs): ");
+					tomatoquantity = sc.nextInt();
+					int total = tomatoquantity * tomatoprice;
+					p1.setTomatoqty((p1.getTomatoqty() - tomatoquantity));
+					System.out.println("Cost of tamato: " + total);
+					ftotal = ftotal + total;
+					System.out.println("Remaining Tomato-Quantity    : "
+							+ p1.getTomatoqty());
+
+					break;
+
+				case 3:
+					int potatoquantity;
+					int potatoprice = pp;
+					System.out.println("Potato: " + potatoprice + " Rs");
+					System.out.println("Quantity(kgs): ");
+					potatoquantity = sc.nextInt();
+					int total1 = potatoquantity * potatoprice;
+					p1.setPotatoqty((p1.getPotatoqty() - potatoquantity));
+					System.out.println("Cost of potato: " + total1);
+					ftotal = ftotal + total1;
+					System.out.println("Remaining Potato-Quantity    : " + p1.getPotatoqty());
+
+					break;
+				case 4:
+					int onionquantity;
+					int onionprice = op;
+					System.out.println("Onion: " + onionprice + " Rs");
+					System.out.println("Quantity(kgs): ");
+					onionquantity = sc.nextInt();
+					int total2 = onionquantity * onionprice;
+					p1.setOnionqty((p1.getOnionqty() - onionquantity));
+					System.out.println("Cost of Onions: " + total2);
+					ftotal = ftotal + total2;
+					System.out.println("Remaining Onion-Quantity     : " + p1.getOnionqty());
+
+					break;
+				default:
+					System.out.println("Invalid");
+					break;
+				}
+	System.out.println("Do you want to select more from Vegetables-Menu?\n Enter your choice (true or false): ");
+				choice = Boolean.parseBoolean(br.readLine());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	void selectFruits() throws IOException {
+		try {
+			BufferedReader br = new BufferedReader(new InputStreamReader(
+					System.in));
+			boolean choice = true;
+			while (choice) {
+				System.out.println("----------------------");
+				System.out.println("FRUITS-MENU");
+				System.out.println("----------------------");
+				System.out.println("1.Apple");
+				System.out.println("2.Grapes");
+				System.out.println("3.Watermelon");
+				System.out.println("4.Mangos");
+				System.out.println("----------------------");
+				System.out.println("Select your choice from Fruits-Menu: ");
+				int j = sc.nextInt();
+				switch (j) {
+
+				case 1:
+					int applequantity;
+					int appleprice = ap;
+					System.out.println("Apple: " + appleprice + " Rs");
+					System.out.println("Quantity(no): ");
+					applequantity = sc.nextInt();
+					int tot = applequantity * appleprice;
+					p1.setAppleqty((p1.getAppleqty() - applequantity));
+					System.out.println("Cost of apple: " + tot);
+					ftotal = ftotal + tot;
+					System.out.println("Remaining Apple-Quantity     : " + p1.getAppleqty());
+
+					break;
+				case 2:
+					int grapesquantity;
+					int grapesprice = gp;
+					System.out.println("grapes: " + grapesprice + " Rs");
+					System.out.println("Quantity(kgs): ");
+					grapesquantity = sc.nextInt();
+					int total = grapesquantity * grapesprice;
+					p1.setGrapesqty((p1.getGrapesqty() - grapesquantity));
+					System.out.println("Cost of grapes: " + total);
+					ftotal = ftotal + total;
+					System.out.println("Remaining Grape-Quantity     : " + p1.getGrapesqty());
+					break;
+				case 3:
+					int wmquantity;
+					int wmprice = wp;
+					System.out.println("water melon: " + wmprice + " Rs");
+					System.out.println("Quantity(kgs): ");
+					wmquantity = sc.nextInt();
+					int total1 = wmquantity * wmprice;
+					p1.setWatermelonqty((p1.getWatermelonqty() - wmquantity));
+					System.out.println("Cost of watermelon: " + total1);
+					ftotal = ftotal + total1;
+					System.out.println("Remaining Watermelon-Quantity: " + p1.getWatermelonqty());
+					break;
+				case 4:
+					int mquantity;
+					int mprice = mp;
+					System.out.println("mangos: " + mprice + " Rs");
+					System.out.println("Quantity(kgs): ");
+					mquantity = sc.nextInt();
+					int total2 = mquantity * mprice;
+					p1.setMangoqty((p1.getMangoqty() - mquantity));
+					System.out.println("Cost of mangoes: " + total2);
+					ftotal = ftotal + total2;
+					System.out.println("Remaining Mangoes-Quantity   : " + p1.getMangoqty());
+					break;
+				default:
+					System.out.println("invalid");
+					break;
+				}
+				System.out
+						.println("Do you want to selct more fruits-menu(true or false): ");
+				choice = Boolean.parseBoolean(br.readLine());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}
+
+package com;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
+public class Productlist {
+	private int riceqty = 100;
+	private int wheatqty = 100;
+	private int brinjalqty = 100;
+	private int tomatoqty = 100;
+	private int potatoqty = 100;
+	private int onionqty = 100;
+	private int appleqty = 100;
+	private int grapesqty = 100;
+	private int watermelonqty = 100;
+	private int mangoqty = 100;
+
+	public int getRiceqty() {
+		return riceqty;
+	}
+
+	public void setRiceqty(int riceqty) {
+		this.riceqty = riceqty;
+	}
+
+	public int getWheatqty() {
+		return wheatqty;
+	}
+
+	public void setWheatqty(int wheatqty) {
+		this.wheatqty = wheatqty;
+	}
+
+	public int getBrinjalqty() {
+		return brinjalqty;
+	}
+
+	public void setBrinjalqty(int brinjalqty) {
+		this.brinjalqty = brinjalqty;
+	}
+
+	public int getTomatoqty() {
+		return tomatoqty;
+	}
+
+	public void setTomatoqty(int tomatoqty) {
+		this.tomatoqty = tomatoqty;
+	}
+
+	public int getPotatoqty() {
+		return potatoqty;
+	}
+
+	public void setPotatoqty(int potatoqty) {
+		this.potatoqty = potatoqty;
+	}
+
+	public int getOnionqty() {
+		return onionqty;
+	}
+
+	public void setOnionqty(int onionqty) {
+		this.onionqty = onionqty;
+	}
+
+	public int getAppleqty() {
+		return appleqty;
+	}
+
+	public void setAppleqty(int appleqty) {
+		this.appleqty = appleqty;
+	}
+
+	public int getGrapesqty() {
+		return grapesqty;
+	}
+
+	public void setGrapesqty(int grapesqty) {
+		this.grapesqty = grapesqty;
+	}
+
+	public int getWatermelonqty() {
+		return watermelonqty;
+	}
+
+	public void setWatermelonqty(int watermelonqty) {
+		this.watermelonqty = watermelonqty;
+	}
+
+	public int getMangoqty() {
+		return mangoqty;
+	}
+
+	public void setMangoqty(int mangoqty) {
+		this.mangoqty = mangoqty;
+	}
+
+	int wp = 36;
+	int rp = 41;
+	int bp = 18;
+	int tp = 16;
+	int pp = 12;
+	int op = 15;
+	int ap = 15;
+	int gp = 33;
+	int wmp = 25;
+	int mp = 63;
+
+
+
+	void run() throws IOException {
+		try {
+
+			BufferedReader br = new BufferedReader(new InputStreamReader(
+					System.in));
+			
+					System.out.println("          AVAILABLE STOCK       ");
+					System.out.println("--------------------------------");
+					System.out.println("Remaining Rice-Quantity: " + getRiceqty());
+					System.out.println("Remaining Wheat-Quantity: "+ getWheatqty());
+					System.out.println("Remaining Brinjal-Quantity: "+ getBrinjalqty());
+					System.out.println("Remaining Tomato-Quantity: "+ getTomatoqty());
+					System.out.println("Remaining Potato-Quantity: "+ getPotatoqty());
+					System.out.println("Remaining Onion-Quantity: "+ getOnionqty());
+					System.out.println("Remaining Apple-Quantity: "+ getAppleqty());
+					System.out.println("Remaining Grape-Quantity: "+ getGrapesqty());
+					System.out.println("Remaining Watermelon-Quantit: "+ getWatermelonq());
+					System.out.println("Remaining Mangoes-Quantity: "+ getMangoqty());
+	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	private String getWatermelonq() {
+	
+		return null;
+	}
+}
+
+package com;
+
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.Buffer;
+import java.util.Scanner;
+
+
+public class Use {
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		boolean choice = true;
+		while (choice) {
+			
+			//System.out.println("1.menu ");
+			System.out.println("1.main menu-Select Option:");
+			Scanner sc = new Scanner(System.in);
+			int k = sc.nextInt();
+			
+			Productlist p = new Productlist();
+			Shopping a = new Shopping();
+			Manage man = new Manage();
+
+			switch (k) {
+			case 1:
+			
+				man.menu();
+				break;
+		
+			default:
+				System.out.println("Invalid Option and no products available");
+				break;
+			}
+			System.out.println("Do you want to go Home Enter your choice true or false:");
+			choice = Boolean.parseBoolean(br.readLine());
+		}
+		
+		System.out.println("THANK YOU VISIT AGAIN !!!");
+		System.exit(0);
+	}
+}
+
+
+
