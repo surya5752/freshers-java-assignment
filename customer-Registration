@@ -2,9 +2,9 @@ package com;
 import java.util.ArrayList;
 import prod.*;
 public class Customer {
-	public int customerID;
-	String customerName;
-	int customerNo;
+	private int customerID;
+	private String customerName;
+	privateint customerNo;
 	ArrayList<product> bookedProductList=new ArrayList<product>();
 	
 	public void addBookedProduct(product obj){
