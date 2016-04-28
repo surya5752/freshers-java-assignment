@@ -1,0 +1,88 @@
+package com;
+
+import java.util.ArrayList;
+public class SuperMarket {
+		String storeName;
+		ArrayList<Customer> custList=new ArrayList<Customer>();
+		ArrayList<product> productList=new ArrayList<product>();
+		
+		public int generateCustomerID()
+		{
+			int count=0;
+			int custId=0;
+			if(custList.size()==0)
+				custId=1;
+			else
+			{
+				for(Customer cust:custList)
+				{
+					count++;
+					if(count==custList.size())
+					{	
+						custId=cust.getCustomerID()+1;
+						break;
+					}
+				}
+			}
+			return custId;
+		}
+		public int generateProductID()
+		{
+			int count=0;
+			int prodId=0;
+			if(productList.size()==0)
+				prodId=1;
+			else
+			{
+				for(product prod:productList)
+				{
+					count++;
+					if(count==productList.size())
+					{
+						prodId=prod.getProductID()+1;
+						break;
+					}
+				}
+			}
+			return prodId;
+			
+		}
+		
+	public void addCustomer(String name,int contactNo)
+	{	
+		int custId=generateCustomerID();
+		Customer c=new Customer(custId,name,contactNo);
+			custList.add(c);
+			
+			
+	
+			
+	}
+		
+		public void addProduct(String name,String status,double price)
+			{
+				int pid=generateProductID();
+				
+				product p=new product(pid, name,price);
+				p.getProductStatus(status);
+				productList.add(p);
+				
+				
+				
+			}
+	
+		
+	public int checkProductAvailability(String ProductName)
+	{
+		int count=0;
+		for(product prod:productList)
+			if((prod.getProductName().equals(ProductName)) && (prod.getProductStatus(null).equals("Available")))
+				{count++;}
+		if(count>0)
+		{System.out.println("available");}
+		
+		return count;
+	}
+	
+	
+		
