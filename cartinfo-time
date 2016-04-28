@@ -1,0 +1,62 @@
+/*carts providing customer based on registration and mentioning time*/
+package com;
+
+import java.util.Date;
+
+class CartsInfo implements Runnable {
+
+ // Available carts are
+ int available = 5;
+ int wanted;
+
+// int ch;
+
+ public CartsInfo(int i) {
+      wanted = i;
+ }
+
+ @Override
+ public void run() {
+      synchronized (this) {
+          // Display available carts
+          System.out.println("Available carts= " + available);
+  
+          if (available >= wanted) {
+               String name = Thread.currentThread().getName();
+               System.out.println(wanted + " Carts(s) reserved for " + name);
+               
+               try {
+            	   Date d =new Date();
+                   System.out.println(d);
+                    Thread.sleep(3000);
+                    available = available - wanted;
+               } catch (InterruptedException ie) {
+                    ie.printStackTrace();
+               }
+          } else {
+            
+               System.out.println("Sorry! carts already in use wait for some time");
+          }
+      }
+
+ }
+
+}
+
+public class Info {
+
+	   public static void main(String[] args) {
+	      
+	        CartsInfo obj = new CartsInfo(1);
+
+	        Thread t1 = new Thread(obj);
+	        Thread t2 = new Thread(obj);
+
+	        t1.setName("First customer");
+	        t2.setName("Second customer");
+
+	        t1.start();
+	        t2.start();
+	   }
+
+	}
