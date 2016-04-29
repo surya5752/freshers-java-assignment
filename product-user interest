@@ -1,13 +1,10 @@
-/*This class is for speacial feature of adding product based on customer choice*/
-
 package com;
-import prod.*;
 
-class product {
-	public int productID;
-	String productName;
-	double productPrice;
-	String productStatus="available";
+class Product {
+	private int productID;
+	private  String productName;
+	private double productPrice;
+	private String productStatus="available";
 	
 	public  String getProductStatus(String status) {
 		return productStatus;
@@ -41,7 +38,7 @@ class product {
 	public void setProductPrice(double productPrice) {
 		this.productPrice = productPrice;
 	}
-	public product(int productID, String productName, double productPrice) {
+	public Product(int productID, String productName, double productPrice) {
 		super();
 		this.productID = productID;
 		this.productName = productName;
@@ -49,7 +46,4 @@ class product {
 		
 
 	}
-	
-	
-	
 }
