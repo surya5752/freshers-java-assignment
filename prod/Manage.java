@@ -1,4 +1,5 @@
 
+
 package prod;
 
 import java.io.BufferedReader;
@@ -12,9 +13,9 @@ public class Manage {
 
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			Shopping s = new Shopping();
-			System.out.println("----------------");
-			System.out.println("WELCOME TO SUPERMARKET");
-			System.out.println("----------------\n");
+			//System.out.println("----------------");
+			//System.out.println("WELCOME TO SUPERMARKET");
+			//System.out.println("----------------\n");
 			boolean choice = true;
 			while (choice) {
 				@SuppressWarnings("resource")
@@ -22,13 +23,11 @@ public class Manage {
 				System.out.println("----------------");
 				System.out.println("   Items present in the shelfs   ");
 				System.out.println("----------------");
-				System.out.println(" 1.cerals     ");
+				System.out.println(" 1.cereals     ");
 				System.out.println(" 2.vegetables ");
 				System.out.println(" 3.fruits     ");
 				System.out.println("----------------");
 				System.out.println("Select what u want : ");
-				System.out.println("OR if you want the product which is not available in the shelfs then go and book your product");
-
 				int i = sc.nextInt();
 				switch (i) {
 				case 1:
@@ -46,6 +45,8 @@ public class Manage {
 				}
 		System.out.println("Do u want to selct more from main menu(true or false): ");
 				choice = Boolean.parseBoolean(br.readLine());
+			System.out.println("if you want the product which is not available in the shelfs then go and book your product");
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -53,4 +54,6 @@ public class Manage {
 	}
 
 }
+
+
 
